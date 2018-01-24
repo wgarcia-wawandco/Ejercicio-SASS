@@ -38,6 +38,7 @@ button {
   border: none;
   background-color: #8f8f8f;
   color: white;
+  cursor: pointer;
   font-size: 16px;
   text-transform: uppercase;
   border-radius: 7px;
@@ -129,6 +130,7 @@ header {
       border: none;
       background-color: #8f8f8f;
       color: white;
+      cursor: pointer;
       font-size: 17px;
       border-radius: 8px;
       padding: 5px 20px; }
@@ -137,6 +139,7 @@ header {
           border: none;
           background-color: #8f8f8f;
           color: white;
+          cursor: pointer;
           font-size: 16px;
           text-transform: uppercase;
           border-radius: 7px;
@@ -148,6 +151,7 @@ header {
           border: none;
           background-color: #8f8f8f;
           color: white;
+          cursor: pointer;
           font-size: 16px;
           text-transform: uppercase;
           border-radius: 7px;
@@ -251,7 +255,7 @@ header {
       @media (max-width: 768px) {
         .bg-4 .content h2 {
           font-size: 2em; } }
-      @media (max-width: 768px) {
+      @media (max-width: 490px) {
         .bg-4 .content h2 {
           font-size: 1.2em; } }
     .bg-4 .content .info div {
@@ -274,6 +278,7 @@ header {
         border: none;
         background-color: #8f8f8f;
         color: white;
+        cursor: pointer;
         font-size: 14px;
         font-weight: 600;
         text-transform: capitalize;
@@ -284,6 +289,7 @@ header {
             border: none;
             background-color: #8f8f8f;
             color: white;
+            cursor: pointer;
             font-size: 16px;
             text-transform: uppercase;
             border-radius: 7px;
@@ -294,6 +300,7 @@ header {
             border: none;
             background-color: #8f8f8f;
             color: white;
+            cursor: pointer;
             font-size: 16px;
             text-transform: uppercase;
             border-radius: 7px;
@@ -394,7 +401,7 @@ header {
         @media (max-width: 768px) {
           .bg-5 .content .info .get-in-touch .info-contact img {
             margin: 0; } }
-        @media (max-width: 768px) {
+        @media (max-width: 490px) {
           .bg-5 .content .info .get-in-touch .info-contact img {
             margin: 0; } }
       .bg-5 .content .info .get-in-touch .info-contact .contact {
@@ -605,12 +612,15 @@ footer {
       flex-wrap: no-wrap;
       width: 32%; }
       @media (max-width: 768px) {
+        footer .content .info div img {
+          margin: 0 5px; } }
+      @media (max-width: 768px) {
         footer .content .info div {
           margin-top: 20px;
-          width: 40%; } }
-      @media (max-width: 490px) {
-        footer .content .info div {
-          margin-top: 20px;
-          width: 95%; } }
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: no-wrap; } }
 
 /*# sourceMappingURL=style.css.map */

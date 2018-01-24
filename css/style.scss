@@ -52,6 +52,7 @@ $breakpoints: (
     border: none;
     background-color: $color;
     color: $text-white;
+    cursor: pointer;
     @if $type == 1{
         font-size: 16px;
         text-transform: uppercase;
@@ -253,7 +254,7 @@ header{
             @include respond-to('medium'){
                 font-size: 2em;
             }
-            @include respond-to('medium'){
+            @include respond-to('small'){
                 font-size: 1.2em;
             }
         }
@@ -349,7 +350,7 @@ header{
                         @include respond-to('medium'){
                             margin: 0;
                         }
-                        @include respond-to('medium'){
+                        @include respond-to('small'){
                             margin: 0;
                         }
                     }
@@ -507,13 +508,15 @@ footer{
             div{
                 @include flex(row, space-between, center);
                 width: 32%;
+                img{
+                    @include respond-to('medium'){
+                        margin: 0 5px;
+                    }
+                }
                 @include respond-to('medium'){
                     margin-top: 20px;
-                    width: 40%;
-                }
-                @include respond-to('small'){
-                    margin-top: 20px;
-                    width: 95%;
+                    @include flex(row, center, center);
+                    
                 }
             }
         }
