@@ -9,72 +9,95 @@
     <link rel="stylesheet" href="dist/style.css">
 </head>
 <body>
-    <header>
-        <div class="content">
-            <ul>
+    <header class="header">
+        <span id="menu-button" onclick=""><i class="fa fa-bars" aria-hidden="true"></i></span>
+        <nav id='navbar' class="navbar">
+            <ul class="nav-menu">
                 <li>Home</li>
-                <li>about</li>
+                <li>About</li>
                 <li>Learn</li>
                 <li>Gardens</li>
                 <li>Get Involved</li>
                 <li>Support Grow</li>
                 <li>News</li>
                 <li>Contact</li>
+                <li class="right"><button>Make a donation</button></li>
             </ul>
-            <button>Make a donation</button>
-        </div>
+        </nav>
     </header>
-    <div class="separation"></div>
+    <section class="bg-2"></section>
     <section class="bg-3">
         <div class="content">
-            <div class="info">
-                <div>
-                    <h1>WELCOME TO GROW</h1>
-                    <p>Started in 2008, Grow is a small charity working with communities to create
-                        community gardens in their area. It's as much about growing community as it
-                        is about growing our food and flowers!.<br><br>
-                        We have two gardens at preset; one in the Waterworks Park in North<br>
-                        Belfats and one in Helens Bay on Helen's Bay Organic Farm.
-                    </p>
-                    <button>Find out more</button>
-                </div>
-                <div>
-                    <h1>GET INVOLVED</h1>
-                    <ul>
-                        <li><i class="fa fa-leaf" aria-hidden="true"></i> Get involded in a community garden</li>
-                        <li><i class="fa fa-leaf" aria-hidden="true"></i> Join community events in the garden</li>
-                        <li><i class="fa fa-leaf" aria-hidden="true"></i> Cooking and healty eating workshops</li>
-                        <li><i class="fa fa-leaf" aria-hidden="true"></i> Action days</li>
-                    </ul>
-                    <button>Find out more</button>
-                </div>
+            <div>
+                <h1>WELCOME TO GROW</h1>
+                <p>Started in 2008, Grow is a small charity working with communities to create
+                    community gardens in their area. It's as much about growing community as it
+                    is about growing our food and flowers!.<br><br>
+                    We have two gardens at preset; one in the Waterworks Park in North<br>
+                    Belfats and one in Helens Bay on Helen's Bay Organic Farm.
+                </p>
+                <button>Find out more</button>
+            </div>
+            <div>
+                <h1>GET INVOLVED</h1>
+                <ul>
+                    <li><i class="fa fa-leaf" aria-hidden="true"></i> Get involded in a community garden</li>
+                    <li><i class="fa fa-leaf" aria-hidden="true"></i> Join community events in the garden</li>
+                    <li><i class="fa fa-leaf" aria-hidden="true"></i> Cooking and healty eating workshops</li>
+                    <li><i class="fa fa-leaf" aria-hidden="true"></i> Action days</li>
+                </ul>
+                <button>Find out more</button>
             </div>
         </div>
-    </section>
-    <section class="bg-4">
-        <div class="content">
-            <h2>latest news</h2>
-            <div class="info">
-                <div>
-                    <img src="Assets/latest-news-image.jpg" alt="">
-                    <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
-                    <button>Read More</button>
-                </div>
-
-                <div>
-                    <img src="Assets/latest-news-image.jpg" alt="">
-                    <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
-                    <button>Read More</button>
-                </div>
-
-                <div>
-                    <img src="Assets/latest-news-image.jpg" alt="">
-                    <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
-                    <button>Read More</button>
+        </section>
+        <section class="bg-4">
+            <div class="content">
+                <h2>latest news</h2>
+                <div class="info">
+                    <div>
+                        <img src="Assets/latest-news-image.jpg" alt="">
+                        <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
+                        <button>Read More</button>
+                    </div>
+    
+                    <div>
+                        <img src="Assets/latest-news-image.jpg" alt="">
+                        <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
+                        <button>Read More</button>
+                    </div>
+    
+                    <div>
+                        <img src="Assets/latest-news-image.jpg" alt="">
+                        <p>Started in 2008, Grow is a small charity working with communities to create community gardens in their area. It's as much about growing...</p>
+                        <button>Read More</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    <script>
+        function menuAction(){
+            let btn = document.getElementById('menu-button');
+            let icon = btn.childNodes[0];
+            if(btn.style.display != 'none'){
+                btn.addEventListener("click", function(){
+                    let navBar = document.getElementById('navbar');
+                    if (navBar.className == 'navbar'){
+                        navBar.classList.add('responsive');
+                        icon.className = 'fa fa-times';
+                    }else{
+                        navBar.className = 'navbar';
+                        icon.className = 'fa fa-bars';
+                    }
+                });
+            }
+        }
+        menuAction();
+    </script>
+<!-- 
+    <div class="separation"></div>
+
+
     <section class="bg-5">
         <div class="content">
             <div class="info">
@@ -146,7 +169,7 @@
                     </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
 </body>
 </html>
