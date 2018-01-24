@@ -1,0 +1,520 @@
+$text-font: Helvetica, sans-serif;
+$text-white: hsl(0, 0%, 100%);
+$text-color: hsl(0, 0%, 40%);
+$button-color: hsl(0, 0%, 56%);
+$bg-header:hsl(0, 0%, 80%);
+$bg-2: hsl(0, 0%, 95%);
+$bg-3: hsl(0, 0%, 90%);
+$bg-4: hsl(0, 0%, 70%);
+$bg-5: hsl(0, 0%, 52%);
+$menu-size: 16px;
+
+$breakpoints: (
+  'small': (max-width: 490px),
+  'medium': (max-width: 768px),
+  'large': (max-width: 1024px),
+  'huge': (max-width: 1440px),
+);
+
+@mixin respond-to($breakpoint) {
+    $raw-query: map-get($breakpoints, $breakpoint);
+  
+    @if $raw-query {
+      $query: if(
+        type-of($raw-query) == 'string',
+        unquote($raw-query),
+        inspect($raw-query)
+      );
+  
+      @media #{$query} {
+        @content;
+      }
+    } @else {
+      @error 'No se ha encontrado un valor para `#{$breakpoint}`. '
+           + 'Por favor, asegúrate que está definido en el mapa `$breakpoints`.';
+    }
+  }
+
+@mixin flex($orientation: row, $justify: center, $align: center, $wrap: no-wrap){
+    display: flex;
+    flex-direction: $orientation;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+}
+@mixin blank-space{
+    margin-bottom: 3px;
+}
+@mixin padding-section{
+    padding: 65px 0;
+}
+@mixin btn($type, $color){
+    border: none;
+    background-color: $color;
+    color: $text-white;
+    @if $type == 1{
+        font-size: 16px;
+        text-transform: uppercase;
+        border-radius: 7px;
+        padding: 7px 9px;
+    }@else if $type == 2{
+        font-size: 17px;
+        border-radius: 8px;
+        padding: 5px 20px;
+    }@else if $type == 3{
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: capitalize;
+        border-radius: 5px;
+        padding: 4px 9px;
+    }
+}
+@mixin content-block{
+    @include flex(row);
+    @include padding-section;
+    @include blank-space;
+}
+
+*{
+    font-family: $text-font;
+    margin: 0;
+    padding: 0;
+}
+.content{
+    @include flex(row, space-between);
+    width: 941px;
+    @include respond-to('medium'){
+        @include flex(column, space-between);
+        width: 90%;
+    }
+}
+
+.info{
+    @include flex(row, space-between, stretch);
+    width: 100%;
+    @include respond-to('medium'){
+        @include flex(column, space-between);
+    }
+}
+button{
+    @include btn(1, $button-color);
+}
+header{
+    @include flex;
+    @include blank-space;
+    background-color: $bg-header;
+    color: $text-white;
+    ul{
+        margin: 25px 0;
+        @include flex(row, space-between);
+        width: 69%;
+        @include respond-to('medium'){
+            @include flex(row, space-between, center, wrap);
+            width: 100%;
+        }
+        @include respond-to('small'){
+            @include flex(row, space-around, center, wrap);
+            width: 100%;
+        }
+    }
+    li{
+        list-style: none;
+        text-align: center;
+        font-size: $menu-size;
+        font-weight: 300;
+        text-transform: capitalize;
+        cursor: pointer;
+        @include respond-to('medium'){
+            width: 20%;
+            margin: 10px 5px;
+            font-size: 1em;
+        }
+        @include respond-to('small'){
+            font-size: 0.8em;
+        }
+    }
+    button{
+        @include respond-to('medium'){
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+    }
+    
+}
+.separation{
+    background-color: $bg-2;
+    @include blank-space;
+    height: 235px;
+}
+
+.bg-3{
+    background-color: $bg-3;
+    color: $text-color;
+    @include content-block;
+    h1{
+        color: $button-color;
+        font-weight: 600;
+        font-size: 29px;
+        @include respond-to('medium'){
+            font-size: 2em;
+        }
+        @include respond-to('small'){
+            font-size: 1.2em;
+        }
+    }
+    .content{
+        
+        .info{
+            line-height: 1.4em;
+            font-weight: 100;
+            font-size: 15.5px;
+            button{
+                @include btn(2, $button-color);
+                @include respond-to('medium'){
+                    @include btn(1, $button-color);
+                    font-size: 1em;
+                    margin-bottom: 20px;
+                }
+                @include respond-to('small'){
+                    @include btn(1, $button-color);
+                    font-size: 0.8em;
+                    margin-bottom: 20px;
+                }
+            }
+            div:first-child{
+                @include flex(column, space-between, flex-start);
+                width: 57%;
+                @include respond-to('medium'){
+                    @include flex(column, space-between, center);
+                    width: 100%;
+                    margin-bottom: 50px;
+                }
+                @include respond-to('small'){
+                    @include flex(column, space-between, center);
+                    width: 95%;
+                    margin-bottom: 50px;
+                }
+                p{
+                    margin: 30px 0;
+                    @include respond-to('medium'){
+                        font-size: 1.2em;
+                    }
+                    @include respond-to('small'){
+                        font-size: 0.9em;
+                    }
+                }
+                
+            }
+            div:last-child{
+                @include flex(column, space-between, flex-start);
+                width: 33%;
+                ul{
+                    margin-top: 15px;
+                    li{
+                        list-style: none;
+                        margin-bottom: 15px;
+                        @include respond-to('medium'){
+                            font-size: 1.2em;
+                        }
+                        @include respond-to('small'){
+                            font-size: 0.9em;
+                        }
+                        i{
+                            @include respond-to('medium'){
+                                margin: 0;
+                            }
+                            margin: 0 7px;
+                        }
+                    }
+                }
+                @include respond-to('medium'){
+                    @include flex(column, space-between, center);
+                    width: 100%;
+                }
+                @include respond-to('small'){
+                    @include flex(column, space-between, center);
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
+.bg-4{
+    background-color: $bg-2;
+    @include content-block;
+    .content{
+        @include flex(column, flex-start, flex-start);
+        h2{
+            text-transform: uppercase;
+            color: $button-color;
+            font-weight: 500;
+            font-size: 25px;
+            margin-bottom: 15px;
+            @include respond-to('medium'){
+                font-size: 2em;
+            }
+            @include respond-to('medium'){
+                font-size: 1.2em;
+            }
+        }
+        .info{
+            div{
+                width: 32%;
+                img{
+                    width: 100%;
+                }
+                p{
+                    font-size: 14px;
+                    color: $text-color;
+                    line-height: 1.5em;
+                    font-weight: 100;
+                    margin: 15px 0;
+                    @include respond-to('medium'){
+                        font-size: 1.2em;
+                    }
+                    @include respond-to('small'){
+                        font-size: 0.8em;
+                    }
+                }
+                button{
+                    @include btn(3, $button-color);
+                    @include respond-to('medium'){
+                        @include btn(1, $button-color);
+                        font-size: 1.1em;
+                    }@include respond-to('small'){
+                        @include btn(1, $button-color);
+                        font-size: 0.7em;
+                    }
+                }
+                @include respond-to('medium'){
+                    width: 100%;
+                    margin: 20px 0;
+                }
+            }
+        }
+        @include respond-to('medium'){
+            @include flex(column, center, center);
+        }
+    } 
+}
+.bg-5{
+    background-color: $bg-4;
+    @include flex(row, center, stretch);
+    padding: 60px 0 38px 0;
+    .content{
+        .info{
+            h2{
+                color: $text-white;
+                text-transform: uppercase;
+                font-weight: 400;
+                font-size: 25px;
+                @include respond-to('medium'){
+                    font-size: 2em;
+                }
+                @include respond-to('small'){
+                    font-size: 1.2em;
+                }
+            }
+
+            .get-in-touch{
+                width: 32%;
+                @include flex(row, flex-start, stretch);
+                @include respond-to('medium'){
+                    width: 90%;
+                    @include flex(column, center, center);
+                }
+                @include respond-to('small'){
+                    width: 90%;
+                    @include flex(column, center, center);
+                }
+                .info{
+                    
+                    @include respond-to('medium'){
+                        @include flex(column, space-between, center);
+                    }
+                    @include respond-to('small'){
+                        @include flex(column, center, center);
+                    }  
+                }
+                .info-contact{
+                    @include flex(row, flex-start, center);
+                    @include respond-to('medium'){
+                        @include flex(column, center, center);
+                        width: 30%;
+                        margin-top: 40px;
+                    }
+                    margin-top: 23px;
+                    img{
+                        margin-right: 36px;
+                        @include respond-to('medium'){
+                            margin: 0;
+                        }
+                        @include respond-to('medium'){
+                            margin: 0;
+                        }
+                    }
+                    .contact{
+                        @include flex(column, center, flex-start);
+                        @include respond-to('medium'){
+                            @include flex(column, center, center);
+                        }
+                         letter-spacing: 0.1px;
+                         span{
+                            color: $text-white;
+                            font-size: 16px;
+                            margin-bottom: 4px;
+                            @include respond-to('medium'){
+                                text-align: center;
+                                margin-top: 15px;
+                                font-size: 1.2em;
+                            }
+                            @include respond-to('small'){
+                                text-align: center;
+                                margin-top: 15px;
+                                font-size: 1.2em;
+                            }
+                         }
+                         a{
+                             font-size: 15.5px;
+                             font-weight: 100;
+                             color: $text-color;
+                             text-decoration: none;
+                             font-style: italic;
+                             border-bottom: 1px solid $button-color;
+                         }
+                    }
+                }
+            }
+            .latest-weather{
+                @include flex(column, flex-start, stretch);
+                @include respond-to('medium'){
+                    @include flex(column, center, center);
+                    width: 90%;
+                    margin: 50px 0;
+                }
+                @include respond-to('small'){
+                    @include flex(column, center, center);
+                    width: 95%;
+                }
+                width: 27%;
+                margin-right: 5%;
+                .info{
+                    @include respond-to('medium'){
+                        @include flex(row, space-around, center);
+                    }
+                    @include respond-to('small'){
+                        @include flex(column, center, center);
+                    }
+                    .weather{
+                        margin-top: 24px;
+                        @include flex(row, flex-start, center);
+                        @include respond-to('medium'){
+                            @include flex(column, center, center);
+                            width: 40%;
+                        }
+                        @include respond-to('small'){
+                            @include flex(column, center, center);
+                            width: 80%;
+                        }
+                        img{
+                            margin-right: 20px;
+                            @include respond-to('medium'){
+                                margin: 0;
+                            }
+                            @include respond-to('small'){
+                                margin: 0;
+                            }
+                        }
+                        .info-weather{
+                            @include flex(column, center, flex-start);
+                            @include respond-to('medium'){
+                                @include flex(column, center, center);
+                            }
+                            span{
+                                color: $text-white;
+                                font-size: 16.5px;
+                                margin-bottom: 2px;
+                                @include respond-to('small'){
+                                    text-align: center;
+                                }
+                            }
+                            p{
+                                margin: 0;
+                                line-height: 1.5em;
+                                color: $text-color;
+                                font-weight: 100;
+                                font-size: 13.6px;
+                                @include respond-to('medium'){
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            }
+
+            .where-to-find-us{
+                @include flex(column,flex-start, flex-start);
+                width: 32%;
+                @include respond-to('medium'){
+                    width: 90%;
+                    @include flex(column, center, center);
+                }
+                h2{
+                    margin-bottom: 25px;
+                }
+            }
+        }
+    }
+}
+
+footer{
+    background-color: $bg-5;
+    @include flex;
+    .content{
+        margin: 25px 0 20px 0;
+        .info{
+            @include respond-to('medium'){
+                @include flex(column, center, center);
+            }
+            @include respond-to('small'){
+                @include flex(column, center, center);
+                width: 100%;
+            }
+            span{
+                color: $bg-header;
+                font-size: 13.5px;
+                font-weight: 100;
+                line-height: 1.5em;
+                @include respond-to('medium'){
+                    text-align: center;
+                }
+                b{
+                    font-weight: 500;
+                    margin-right: 5px;
+                }
+                a{
+                    text-decoration: none;
+                    color: $text-white;
+                    border-bottom: 1px solid $text-white;
+                    margin-left: 5px;
+                    font-size: 14px;
+                    font-weight: 300;
+                }
+            }
+            div{
+                @include flex(row, space-between, center);
+                width: 32%;
+                @include respond-to('medium'){
+                    margin-top: 20px;
+                    width: 40%;
+                }
+                @include respond-to('small'){
+                    margin-top: 20px;
+                    width: 95%;
+                }
+            }
+        }
+    }
+}
