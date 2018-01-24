@@ -344,12 +344,13 @@ body{
             @include flex(column, space-between, flex-start);
             @include respond-to('large'){
                 margin-top: 50px;
-                width: 100%;
+                width: 90%;
                 @include flex(column, space-between, center);
             }
             .content-weather{
                 @include flex(column, space-between, stretch);
                 margin-top: 20px;
+
                 .weather{
                     margin-bottom: 25px;
                     @include flex(row, flex-start, center);
