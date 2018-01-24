@@ -398,7 +398,7 @@ footer{
         @include content;
         @include flex(row, space-between, center);
         @include respond-to('large'){
-            @include content(2);
+            @include content(1);
             @include flex(column, space-between, center);
         }
 
